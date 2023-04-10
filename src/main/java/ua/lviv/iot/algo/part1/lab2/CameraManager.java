@@ -4,6 +4,7 @@ package ua.lviv.iot.algo.part1.lab2;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CameraManager {
     private final static List<Camera> cameras= new ArrayList<>();
@@ -24,20 +25,25 @@ public class CameraManager {
             System.out.println(camera.takePhoto());
         }
 
-        findAllWithSameBrand("Canon");
-        findAllWithSameModel("XP");
+        findAllWithSameBrand("Canon").forEach(System.out::println);
+        findAllWithSameModel("XP").forEach(System.out::println);
     }
 
     public static void addCamera(final Camera camera) {
         cameras.add(camera);
     }
-    public static void findAllWithSameModel(String model) {
+    public static List<Camera> findAllWithSameModel(String model) {
         System.out.println("\nCameras with the model:  " + model + ":");
-        cameras.stream().filter(v -> (Objects.equals(v.getModel(), model))).toList().forEach(System.out::println);
+        var searched = cameras.stream().filter(v -> (Objects.equals(v.getModel(), model))).collect(Collectors.toList());
+        return searched;
     }
 
-    public static void findAllWithSameBrand(String brand) {
+    public static List<Camera> findAllWithSameBrand(String brand) {
         System.out.println("Cameras with the brand " + brand + ":");
-        cameras.stream().filter(v -> (Objects.equals(v.getBrand(), brand))).toList().forEach(System.out::println);
+        var searched = cameras.stream().filter(v -> (Objects.equals(v.getBrand(), brand))).collect(Collectors.toList());
+        return searched;
+    }
+    public List<Camera> getAll(){
+        return cameras;
     }
 }

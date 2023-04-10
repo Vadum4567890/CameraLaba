@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class HybridCameraTest {
 
     @Test
-    public void testHybridCameraTakePhoto() {
+    void testHybridCameraTakePhoto() {
         var camera = new HybridCamera("model", "brand", "lens", "resolution", "red");
         String photo = camera.takePhoto();
         assertEquals("Camera resolution: resolution\nCamera color: red\n", photo);
