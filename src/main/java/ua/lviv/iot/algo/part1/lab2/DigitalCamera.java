@@ -2,13 +2,11 @@ package ua.lviv.iot.algo.part1.lab2;
 
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString(callSuper = true)
 public class DigitalCamera extends Camera{
     private String resolution;

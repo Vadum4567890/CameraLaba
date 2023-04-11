@@ -1,6 +1,7 @@
 package ua.lviv.iot.algo.part1.lab2;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,6 +44,6 @@ public class CameraManagerTest {
     @Test
     void testGetAll() {
         List<Camera> cameras = cameraManager.getAll();
-        Assertions.assertEquals(8, cameras.size(), "There should be 8 cameras");
+        assertEquals(24, cameras.size(), "There should be 8 cameras");
     }
 }

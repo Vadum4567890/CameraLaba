@@ -3,7 +3,6 @@ import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString(callSuper = true)
 public class FilmCamera extends Camera{
     private String filmType;
