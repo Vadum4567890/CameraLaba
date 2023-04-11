@@ -1,19 +1,15 @@
 package ua.lviv.iot.algo.part1.lab2;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CameraManagerTest {
     private CameraManager cameraManager;
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         cameraManager = new CameraManager();
 
         cameraManager.addCamera(new DigitalCamera("XR", "Canon", "Nu", "1920x1080", 0,"Sap", 10));
@@ -25,25 +21,41 @@ public class CameraManagerTest {
         cameraManager.addCamera(new HybridCamera("GV", "GHD", "Ultra", "4k","White"));
         cameraManager.addCamera(new HybridCamera("GV", "GHD", "Ultra", "4k","Black"));
     }
+    @AfterEach
+    public void delete(){
+        cameraManager.getAll().clear();
+    }
 
     @Test
-    void testFindAllWithSameBrand() {
+    public void testFindAllWithSameBrand() {
         List<Camera> cameras = cameraManager.findAllWithSameBrand("Canon");
         assertEquals(2, cameras.size());
-        assertTrue(cameras.get(0) instanceof DigitalCamera);
-        assertTrue(cameras.get(1) instanceof DigitalCamera);
+        for (var camera:cameras) {
+            assertTrue(camera.getBrand()=="Canon");
+        }
     }
-
     @Test
-    void testFindAllWithSameModel() {
-        List<Camera> cameras = cameraManager.findAllWithSameModel("XP");
-        Assertions.assertEquals(2, cameras.size());
-        assertTrue(cameras.get(0) instanceof DigitalCamera, "DigitalCamera");
-    }
-
-    @Test
-    void testGetAll() {
+    public void testIsEmptyManager() {
         List<Camera> cameras = cameraManager.getAll();
-        assertEquals(24, cameras.size(), "There should be 8 cameras");
+        assertFalse(cameras.size()==0);
+    }
+
+    @Test
+    public void testFindAllWithSameModel() {
+        List<Camera> cameras = cameraManager.findAllWithSameModel("XP");
+        Assertions.assertEquals(1, cameras.size());
+        for (var camera:cameras) {
+            assertTrue(camera.getModel()=="XP");
+        }
+    }
+    @Test
+    public void testIsThatBrandInList() {
+        List<Camera> cameras = cameraManager.findAllWithSameModel("AMD");
+        Assertions.assertEquals(0, cameras.size());
+    }
+
+    @Test
+    public void testGetAll() {
+        assertEquals(8,cameraManager.getAll().size());
     }
 }

@@ -10,14 +10,19 @@ import lombok.ToString;
 public class SpeedCamera extends Camera {
     private double maxSpeedDetection;
     private double price;
-    public SpeedCamera(String model,String brand, String lens, double maxSpeedDetection, double price){
-        super(model,brand,lens);
+    public SpeedCamera(final String model, final String brand,
+                       final String lens, final double maxSpeedDetection,
+                       final double price) {
+        super(model, brand, lens);
         this.maxSpeedDetection = maxSpeedDetection;
         this.price = price;
     }
 
     @Override
-    public String takePhoto() {
-        return "Max speed Detection: " + maxSpeedDetection + "\nFine Price: " + price + "\n";
+    public final String takePhoto() {
+        return "Max speed Detection: "
+                + this.maxSpeedDetection
+                + "\nFine Price: "
+                + this.price + "\n";
     }
 }
