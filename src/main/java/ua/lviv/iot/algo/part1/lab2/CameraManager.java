@@ -1,6 +1,7 @@
 package ua.lviv.iot.algo.part1.lab2;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,7 +9,7 @@ import java.util.stream.Collectors;
 
 public final class CameraManager {
     private static final List<Camera> CAMERA_LIST = new ArrayList<>();
-    public static void main(final String[] args) {
+    public static void main(final String[] args) throws IOException {
         final int photosCount = 10;
         final int photosCount2 = 20;
         final int filmISO = 124231;
@@ -42,6 +43,9 @@ public final class CameraManager {
 
         findAllWithSameBrand("Canon").forEach(System.out::println);
         findAllWithSameModel("XP").forEach(System.out::println);
+
+        CameraWriter cameraWriter = new CameraWriter("result.csv");
+        cameraWriter.writeCamerasToFile(CAMERA_LIST);
     }
 
     public static void addCamera(final Camera camera) {

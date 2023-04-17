@@ -7,6 +7,7 @@ import lombok.ToString;
 @Setter
 @ToString(callSuper = true)
 public class FilmCamera extends Camera {
+    public  static final String HEADERS =", filmType, filmISO\n";
     private String filmType;
     private int filmISO;
     public FilmCamera(final String model, final String brand, final String lens,
@@ -15,6 +16,18 @@ public class FilmCamera extends Camera {
         this.filmType = filmType;
         this.filmISO = filmISO;
     }
+
+    public String getHeaders(){
+        return super.getHeaders()
+                + HEADERS;
+    }
+    public String toCSV(){
+        return super.toCSV()
+                + ", " + filmType
+                + ", " + filmISO
+                + "\n";
+    }
+
     @Override
     public final String takePhoto() {
         return "FilmType: " + this.filmType

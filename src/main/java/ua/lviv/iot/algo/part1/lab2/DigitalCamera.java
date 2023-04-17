@@ -9,6 +9,7 @@ import lombok.ToString;
 @Setter
 @ToString(callSuper = true)
 public class DigitalCamera extends Camera {
+    public  static final String HEADERS = ", resolution, zoom, memoryCardType, photosCount";
     private String resolution;
     private double zoom;
     private String memoryCardType;
@@ -35,6 +36,21 @@ public class DigitalCamera extends Camera {
         this.resolution = resolution;
         this.zoom = zoom;
     }
+
+    public String getHeaders(){
+        return super.getHeaders()
+                + HEADERS
+                + "\n";
+    }
+    public String toCSV(){
+        return super.toCSV()
+                + ", " + resolution
+                + ", " + zoom
+                + ", " + memoryCardType
+                + "\n";
+
+    }
+
     @Override
     public final String takePhoto() {
         return "Camera resolution: "
