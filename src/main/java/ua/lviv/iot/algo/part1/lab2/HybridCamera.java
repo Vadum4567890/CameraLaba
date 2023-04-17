@@ -8,7 +8,6 @@ import lombok.ToString;
 @Setter
 @ToString(callSuper = true)
 public class HybridCamera extends Camera {
-    public  static final String HEADERS =", resolution, color\n";
     private String resolution;
     private String color;
     public HybridCamera(final String model, final String brand,
@@ -18,18 +17,6 @@ public class HybridCamera extends Camera {
         this.resolution = resolution;
         this.color = color;
     }
-
-    public String getHeaders(){
-        return super.getHeaders()
-                + HEADERS;
-    }
-    public String toCSV(){
-        return super.toCSV()
-                + ", " + resolution
-                + ", " + color
-                + "\n";
-    }
-
     @Override
     public final String takePhoto() {
         return "Camera resolution: "

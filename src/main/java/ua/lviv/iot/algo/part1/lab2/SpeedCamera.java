@@ -8,7 +8,6 @@ import lombok.ToString;
 @Setter
 @ToString(callSuper = true)
 public class SpeedCamera extends Camera {
-    public  static final String HEADERS =", maxSpeedDetection, price\n";
     private double maxSpeedDetection;
     private double price;
     public SpeedCamera(final String model, final String brand,
@@ -17,17 +16,6 @@ public class SpeedCamera extends Camera {
         super(model, brand, lens);
         this.maxSpeedDetection = maxSpeedDetection;
         this.price = price;
-    }
-
-    public String getHeaders(){
-        return super.getHeaders()
-                + HEADERS;
-    }
-    public String toCSV(){
-        return super.toCSV()
-                + ", " + maxSpeedDetection
-                + ", " + price
-                + "\n";
     }
 
     @Override
