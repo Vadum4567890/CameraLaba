@@ -52,7 +52,7 @@ public final class CameraManager {
         CAMERA_LIST.add(camera);
     }
     public static List<Camera> findAllWithSameModel(final String model) {
-        System.out.println("\nCameras with the model:  " + model + ":");
+        System.out.println("Cameras with the model:  " + model + ":");
         return CAMERA_LIST.stream()
                 .filter(v -> Objects.equals(v.getModel(), model))
                 .collect(Collectors.toList());
