@@ -1,29 +1,42 @@
-package ua.lviv.iot.algo.part1.lab2;
+package ua.lviv.iot.algo.part1.lab2.Writer;
+
+import ua.lviv.iot.algo.part1.lab2.Model.*;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class CameraWriter {
 
     private final String filePath;
-    public CameraWriter(){
+
+    public CameraWriter() {
         filePath = "";
     }
 
-    public CameraWriter(String filePath) {
+    public CameraWriter(final String filePath) {
         this.filePath = filePath;
     }
 
-
-    public void writeCamerasToFile(List<Camera> cameraList) throws IOException {
-        if(cameraList == null || cameraList.isEmpty()) {
+    /**
+     *
+     * @param cameraList
+     * @throws IOException
+     */
+    public void writeCamerasToFile(final List<Camera> cameraList,
+                                   final String encoding)
+            throws IOException {
+        if (cameraList == null || cameraList.isEmpty()) {
             return;
         }
-        FileWriter fileWriter = new FileWriter(filePath);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
+        FileOutputStream outputStream =
+                new FileOutputStream(filePath);
+        OutputStreamWriter outputStreamWriter =
+                new OutputStreamWriter(outputStream, encoding);
+        BufferedWriter bufferedWriter =
+                new BufferedWriter(outputStreamWriter);
         boolean hasDigitalCameraHeader = false;
         boolean hasFilmCameraHeader = false;
         boolean hasSpeedCameraHeader = false;
@@ -58,6 +71,7 @@ public class CameraWriter {
         }
 
         bufferedWriter.close();
-        fileWriter.close();
+        outputStreamWriter.close();
+        outputStream.close();
     }
 }

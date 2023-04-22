@@ -1,5 +1,6 @@
-package ua.lviv.iot.algo.part1.lab2;
-
+package ua.lviv.iot.algo.part1.lab2.Manager;
+import ua.lviv.iot.algo.part1.lab2.Model.*;
+import ua.lviv.iot.algo.part1.lab2.Writer.CameraWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public final class CameraManager {
         findAllWithSameModel("XP").forEach(System.out::println);
 
         CameraWriter cameraWriter = new CameraWriter("result.csv");
-        cameraWriter.writeCamerasToFile(CAMERA_LIST);
+        cameraWriter.writeCamerasToFile(CAMERA_LIST, "UTF-8");
     }
 
     public static void addCamera(final Camera camera) {
@@ -66,6 +67,6 @@ public final class CameraManager {
     }
 
     public static List<Camera> getAll() {
-        return CAMERA_LIST;
+        return new ArrayList<>(CAMERA_LIST);
     }
 }

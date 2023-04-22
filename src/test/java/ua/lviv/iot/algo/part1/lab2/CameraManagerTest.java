@@ -1,6 +1,8 @@
 package ua.lviv.iot.algo.part1.lab2;
 
 import org.junit.jupiter.api.*;
+import ua.lviv.iot.algo.part1.lab2.Manager.CameraManager;
+import ua.lviv.iot.algo.part1.lab2.Model.*;
 
 import java.util.List;
 

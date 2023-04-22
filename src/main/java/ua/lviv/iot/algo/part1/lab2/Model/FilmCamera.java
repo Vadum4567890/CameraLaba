@@ -1,13 +1,14 @@
-package ua.lviv.iot.algo.part1.lab2;
+package ua.lviv.iot.algo.part1.lab2.Model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import ua.lviv.iot.algo.part1.lab2.Model.Camera;
 
 @Getter
 @Setter
 @ToString(callSuper = true)
 public class FilmCamera extends Camera {
-    public  static final String HEADERS =", filmType, filmISO\n";
+    public  static final String HEADERS = ", filmType, filmISO\n";
     private String filmType;
     private int filmISO;
     public FilmCamera(final String model, final String brand, final String lens,
@@ -17,11 +18,20 @@ public class FilmCamera extends Camera {
         this.filmISO = filmISO;
     }
 
-    public String getHeaders(){
+    /**
+     *
+     * @return HEADERS
+     */
+    public String getHeaders() {
         return super.getHeaders()
                 + HEADERS;
     }
-    public String toCSV(){
+
+    /**
+     *
+     * @return toCSV
+     */
+    public String toCSV() {
         return super.toCSV()
                 + ", " + filmType
                 + ", " + filmISO

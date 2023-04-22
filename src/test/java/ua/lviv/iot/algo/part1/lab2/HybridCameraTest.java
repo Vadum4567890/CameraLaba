@@ -1,8 +1,7 @@
 package ua.lviv.iot.algo.part1.lab2;
-
 import org.junit.jupiter.api.Test;
+import ua.lviv.iot.algo.part1.lab2.Model.HybridCamera;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HybridCameraTest {
