@@ -1,15 +1,15 @@
-package ua.lviv.iot.algo.part1.lab2;
-
-
+package ua.lviv.iot.algo.part1.lab2.Model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import ua.lviv.iot.algo.part1.lab2.Model.Camera;
 
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class DigitalCamera extends Camera {
-    public  static final String HEADERS = ", resolution, zoom, memoryCardType, photosCount";
+public final class DigitalCamera extends Camera {
+    public  static final String HEADERS = ", resolution, zoom, "
+                                        + "memoryCardType, photosCount";
     private String resolution;
     private double zoom;
     private String memoryCardType;
@@ -24,25 +24,25 @@ public class DigitalCamera extends Camera {
         this.memoryCardType = memoryCardType;
         this.photosCount = photosCount;
     }
-    public final void resetZoom() {
+    public void resetZoom() {
         this.zoom = 1;
     }
-    public final void eraseMemory() {
+    public void eraseMemory() {
         this.photosCount = 0;
     }
 
-    public final void changeSettings(final String resolution,
+    public void changeSettings(final String resolution,
                                      final double zoom) {
         this.resolution = resolution;
         this.zoom = zoom;
     }
 
-    public String getHeaders(){
+    public String getHeaders() {
         return super.getHeaders()
                 + HEADERS
                 + "\n";
     }
-    public String toCSV(){
+    public String toCSV() {
         return super.toCSV()
                 + ", " + resolution
                 + ", " + zoom
@@ -52,7 +52,7 @@ public class DigitalCamera extends Camera {
     }
 
     @Override
-    public final String takePhoto() {
+    public String takePhoto() {
         return "Camera resolution: "
                 + this.resolution
                 + "\nCamera zoom: "

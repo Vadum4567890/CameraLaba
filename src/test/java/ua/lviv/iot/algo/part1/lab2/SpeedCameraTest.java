@@ -1,6 +1,7 @@
 package ua.lviv.iot.algo.part1.lab2;
 
 import org.junit.jupiter.api.Test;
+import ua.lviv.iot.algo.part1.lab2.Model.SpeedCamera;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,5 +1,6 @@
-package ua.lviv.iot.algo.part1.lab2;
-
+package ua.lviv.iot.algo.part1.lab2.Manager;
+import ua.lviv.iot.algo.part1.lab2.Model.*;
+import ua.lviv.iot.algo.part1.lab2.Writer.CameraWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,27 +46,27 @@ public final class CameraManager {
         findAllWithSameModel("XP").forEach(System.out::println);
 
         CameraWriter cameraWriter = new CameraWriter("result.csv");
-        cameraWriter.writeCamerasToFile(CAMERA_LIST);
+        cameraWriter.writeCamerasToFile(CAMERA_LIST, "UTF-8");
     }
 
     public static void addCamera(final Camera camera) {
         CAMERA_LIST.add(camera);
     }
     public static List<Camera> findAllWithSameModel(final String model) {
-        System.out.println("\nCameras with the model:  " + model + ":");
+        System.out.println("Cameras with the model:  " + model + ":");
         return CAMERA_LIST.stream()
-                          .filter(v -> Objects.equals(v.getModel(), model))
-                          .collect(Collectors.toList());
+                .filter(v -> Objects.equals(v.getModel(), model))
+                .collect(Collectors.toList());
     }
 
     public static List<Camera> findAllWithSameBrand(final String brand) {
         System.out.println("Cameras with the brand " + brand + ":");
         return CAMERA_LIST.stream()
-                          .filter(v -> Objects.equals(v.getBrand(), brand))
-                          .collect(Collectors.toList());
+                .filter(v -> Objects.equals(v.getBrand(), brand))
+                .collect(Collectors.toList());
     }
 
     public static List<Camera> getAll() {
-        return CAMERA_LIST;
+        return new ArrayList<>(CAMERA_LIST);
     }
 }

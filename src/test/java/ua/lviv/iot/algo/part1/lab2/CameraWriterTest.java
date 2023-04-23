@@ -4,6 +4,11 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ua.lviv.iot.algo.part1.lab2.Model.Camera;
+import ua.lviv.iot.algo.part1.lab2.Model.DigitalCamera;
+import ua.lviv.iot.algo.part1.lab2.Model.FilmCamera;
+import ua.lviv.iot.algo.part1.lab2.Model.SpeedCamera;
+import ua.lviv.iot.algo.part1.lab2.Writer.CameraWriter;
 
 import java.io.*;
 import java.nio.file.Files;

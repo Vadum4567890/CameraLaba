@@ -1,14 +1,14 @@
-package ua.lviv.iot.algo.part1.lab2;
-
+package ua.lviv.iot.algo.part1.lab2.Model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import ua.lviv.iot.algo.part1.lab2.Model.Camera;
 
 @Getter
 @Setter
 @ToString(callSuper = true)
 public class SpeedCamera extends Camera {
-    public  static final String HEADERS =", maxSpeedDetection, price\n";
+    public  static final String HEADERS = ", maxSpeedDetection, price\n";
     private double maxSpeedDetection;
     private double price;
     public SpeedCamera(final String model, final String brand,
@@ -19,11 +19,20 @@ public class SpeedCamera extends Camera {
         this.price = price;
     }
 
-    public String getHeaders(){
+    /**
+     *
+     * @return HEADERS
+     */
+    public String getHeaders() {
         return super.getHeaders()
                 + HEADERS;
     }
-    public String toCSV(){
+
+    /**
+     *
+     * @return toCSV
+     */
+    public String toCSV() {
         return super.toCSV()
                 + ", " + maxSpeedDetection
                 + ", " + price
